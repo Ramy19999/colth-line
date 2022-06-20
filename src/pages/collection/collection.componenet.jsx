@@ -4,7 +4,7 @@ import "./collection.styles.scss";
 import { useParams,Route } from "react-router-dom";
 import { selectCollection } from "../../redux/shop/shop.selectors";
 import CollectionItem from "../../components/collection-item/collection-item.componenet";
-const CollectionPage = (props) => {
+const CollectionPage = () => {
   // you can use the app selector hook to get the state (just like map state to props but the modern hook version)
   // you can pass the selectors too e.g useSelector(selectShop)
   const state = useSelector((state) => state);
@@ -22,15 +22,15 @@ const CollectionPage = (props) => {
   // for now it's not working because the collections reducer isn't there yet
   // so i commented it for now cause it will break the app
     const collection = useSelector(selectCollection(params.collectionId));
-
     const { title, items } = collection;
+    console.log(collection);
   return (
     <div className="collection-page">
       <h2 className="title">{title}</h2> 
       Yo
       <div className="items">
         {items.map(item => (
-                <CollectionItem key={item.id} item ={item}/>
+          <CollectionItem key={item.id} item ={item}/>
         ))} 
       </div>
     </div>
