@@ -3,6 +3,7 @@ import './checkout.styles.scss';
 import { connect } from "react-redux";
 import {createStructuredSelector} from 'reselect';
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import StripeCheckoutButton from "../../components/stripe-button/stripe-button.componenet";
 import { selectCartItems,selectCartTotal } from "../../redux/cart/cart.selectors";
 const CheckoutPage = ({cartItems,total}) => (
     <div className="checkout-page">
@@ -29,7 +30,14 @@ const CheckoutPage = ({cartItems,total}) => (
         ))}
         <div className="total">
             <span className="total">${total} TOTAL </span>
+            
         </div>
+        <div className="text-warning">
+            * aooouy ppl use this magic nums for payment *
+            <br/>
+            424 424 424 424 - Exp: 01/23 Cvv : 123  adios 
+        </div>
+        <StripeCheckoutButton className="button"  price={total} />
     </div>
 );
 const mapStateToProps = createStructuredSelector({
